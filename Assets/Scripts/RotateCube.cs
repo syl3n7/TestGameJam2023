@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateCube : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform from;
+    public Transform to;
+    float speed = 0.01f;
+    float timeCount = 0.0f;
     void Start()
     {
-        
+        //Application.(60); //set frameRate to 60
     }
-
-    // Update is called once per frame
     void Update()
     {
-        //gameObject
+        gameObject.transform.rotation = Quaternion.Lerp(from.rotation, to.rotation, timeCount * speed);
+        timeCount += Time.deltaTime;
     }
 }
