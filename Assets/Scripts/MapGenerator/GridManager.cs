@@ -14,8 +14,6 @@ public class GridManager : MonoBehaviour
     public GridCellObjects[] sceneryCellsObjects;
     public GridCellObjects[] placedCellObjects;
 
-    public Canvas canvas;
-
     private PathGenerator pathGenerator;
 
     private void Start()
@@ -38,8 +36,8 @@ public class GridManager : MonoBehaviour
     private IEnumerator CreateGrid(List<Vector2Int> pathCells)
     {
         yield return LayPathCells(pathCells);
-        yield return LayPlacedCells();
         yield return LaySceneryCells();
+        yield return LayPlacedCells();
     }
 
     private IEnumerator LayPathCells(List<Vector2Int> pathCells)
@@ -51,7 +49,6 @@ public class GridManager : MonoBehaviour
             GameObject pathTile = gridCellsObjects[neighbourValue].cellPrefab;
             GameObject pathTileCell = Instantiate(pathTile, new Vector2(pathCell.x, pathCell.y), Quaternion.identity);
             pathTileCell.transform.Rotate(0f, 0f, gridCellsObjects[neighbourValue].zRotation, Space.Self);
-            pathTileCell.transform.SetParent(canvas.transform);
             //yield return new WaitForSeconds(.1f);
         }
 

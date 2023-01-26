@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   cellType: 1
-  cellPrefab: {fileID: 4458758643511372184, guid: 5447cf11a1852644eb23b6a38a168fe2, type: 3}
+  cellPrefab: {fileID: 4305777784670576673, guid: ee6726d9e84760248b6422208af2fdca, type: 3}
   zRotation: 0
