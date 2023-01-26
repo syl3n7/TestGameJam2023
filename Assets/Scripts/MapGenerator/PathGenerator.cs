@@ -5,7 +5,8 @@ using UnityEngine;
 public class PathGenerator
 {
     private int width, height;
-    private List<Vector2Int> pathCells;
+    public List<Vector2Int> pathCells;
+    private List<Vector2Int> route;
 
     public PathGenerator(int width, int height)
     {
@@ -57,6 +58,50 @@ public class PathGenerator
         return pathCells;
     }
 
+    public List<Vector2Int> GenerateRoute()
+    {
+        Vector2Int direction = Vector2Int.right;
+        route = new List<Vector2Int>();
+        Vector2Int currentCell = pathCells[0];
+
+        while (currentCell.x < 23)
+        {
+            route.Add(new Vector2Int(currentCell.x, currentCell.y));
+
+            if (CellIsTaken(currentCell + direction))
+            {
+                currentCell = currentCell + direction;
+
+            }
+            else if (CellIsTaken(currentCell + Vector2Int.up) && direction != Vector2Int.down)
+            {
+                direction = Vector2Int.up;
+                currentCell = currentCell + direction;
+            }
+            else if (CellIsTaken(currentCell + Vector2Int.down) && direction != Vector2Int.up)
+            {
+                direction = Vector2Int.down;
+                currentCell = currentCell + direction;
+            }
+            else if (CellIsTaken(currentCell + Vector2Int.right) && direction != Vector2Int.left)
+            {
+                direction = Vector2Int.right;
+                currentCell = currentCell + direction;
+            }
+            else if (CellIsTaken(currentCell + Vector2Int.left) && direction != Vector2Int.right)
+            {
+                direction = Vector2Int.left;
+                currentCell = currentCell + direction;
+            }
+            else
+            {
+                throw new System.Exception("How=?==?");
+            }
+        }
+
+        return route;
+    }
+
     public bool CellIsEmpty(int x, int y)
     {
         return !pathCells.Contains(new Vector2Int(x, y));
@@ -65,6 +110,11 @@ public class PathGenerator
     public bool CellIsTaken(int x, int y)
     {
         return pathCells.Contains(new Vector2Int(x, y));
+    }
+
+    public bool CellIsTaken(Vector2Int cell)
+    {
+        return pathCells.Contains(cell);
     }
 
     public int GetCellNeighbourValue(int x, int y)

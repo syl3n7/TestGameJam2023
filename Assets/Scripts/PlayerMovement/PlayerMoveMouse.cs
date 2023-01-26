@@ -48,7 +48,7 @@ public class PlayerMoveMouse : MonoBehaviour
 
             Vector3 aimDirection = (mousePosition - transform.position).normalized;
             float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-            shipTransform.eulerAngles = new Vector3(0, 180, -angle - 90);
+            shipTransform.eulerAngles = new Vector3(-50f, 180f, -angle - 90f);
         }
     }
 }

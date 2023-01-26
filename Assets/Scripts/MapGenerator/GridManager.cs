@@ -10,6 +10,8 @@ public class GridManager : MonoBehaviour
     public int gridHeight = 8;
     public int minPathLength = 30;
 
+    private EnemyWaveManager waveManager;
+
     public GridCellObjects[] gridCellsObjects;
     public GridCellObjects[] sceneryCellsObjects;
     public GridCellObjects[] placedCellObjects;
@@ -19,6 +21,7 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         pathGenerator = new PathGenerator(gridWidth, gridHeight);
+        waveManager = GetComponent<EnemyWaveManager>();
 
         List<Vector2Int> pathCells = pathGenerator.GeneratePath();
 
@@ -29,6 +32,8 @@ public class GridManager : MonoBehaviour
             pathCells = pathGenerator.GeneratePath();
             pathSize = pathCells.Count;
         }
+
+        waveManager.SetPathCells(pathGenerator.GenerateRoute());
 
         StartCoroutine(CreateGrid(pathCells));
     }
@@ -60,7 +65,7 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < gridHeight; y++)
             {
-                if (pathGenerator.CellIsEmpty(x, y) && pathGenerator.CellIsEmpty(x, y- 1) && pathGenerator.CellIsEmpty(x, y + 1) && 
+                if (pathGenerator.CellIsEmpty(x, y) && pathGenerator.CellIsEmpty(x, y - 1) && pathGenerator.CellIsEmpty(x, y + 1) &&
                         pathGenerator.CellIsEmpty(x + 1, y) && pathGenerator.CellIsEmpty(x - 1, y))
                 {
                     int randomScenery = UnityEngine.Random.Range(0, sceneryCellsObjects.Length);
