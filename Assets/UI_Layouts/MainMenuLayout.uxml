@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.46); align-items: stretch; justify-content: space-around; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; align-self: center; flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.62); align-items: stretch; justify-content: center; width: 932px;">
+            <ui:VisualElement name="button">
+                <ui:Button text="Start" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-left-color: rgb(109, 245, 255); border-right-color: rgb(109, 245, 255); border-top-color: rgb(109, 245, 255); border-bottom-color: rgb(109, 245, 255); background-color: rgb(156, 133, 133);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="button">
+                <ui:Button text="Settings" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-left-color: rgb(109, 245, 255); border-right-color: rgb(109, 245, 255); border-top-color: rgb(109, 245, 255); border-bottom-color: rgb(109, 245, 255); background-color: rgb(156, 133, 133);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="button">
+                <ui:Button text="Quit" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-left-color: rgb(109, 245, 255); border-right-color: rgb(109, 245, 255); border-top-color: rgb(109, 245, 255); border-bottom-color: rgb(109, 245, 255); background-color: rgb(156, 133, 133);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
