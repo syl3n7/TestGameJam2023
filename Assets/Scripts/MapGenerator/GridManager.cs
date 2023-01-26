@@ -33,8 +33,6 @@ public class GridManager : MonoBehaviour
             pathSize = pathCells.Count;
         }
 
-        waveManager.SetPathCells(pathGenerator.GenerateRoute());
-
         StartCoroutine(CreateGrid(pathCells));
     }
 
@@ -43,6 +41,7 @@ public class GridManager : MonoBehaviour
         yield return LayPathCells(pathCells);
         yield return LaySceneryCells();
         yield return LayPlacedCells();
+        yield return LayEnemyCell();
     }
 
     private IEnumerator LayPathCells(List<Vector2Int> pathCells)
@@ -54,7 +53,7 @@ public class GridManager : MonoBehaviour
             GameObject pathTile = gridCellsObjects[neighbourValue].cellPrefab;
             GameObject pathTileCell = Instantiate(pathTile, new Vector2(pathCell.x, pathCell.y), Quaternion.identity);
             pathTileCell.transform.Rotate(0f, 0f, gridCellsObjects[neighbourValue].zRotation, Space.Self);
-            //yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.1f);
         }
 
         yield return null;
@@ -70,7 +69,7 @@ public class GridManager : MonoBehaviour
                 {
                     int randomScenery = UnityEngine.Random.Range(0, sceneryCellsObjects.Length);
                     Instantiate(sceneryCellsObjects[randomScenery].cellPrefab, new Vector2(x, y), Quaternion.identity);
-                    //yield return new WaitForSeconds(.01f);
+                    yield return new WaitForSeconds(.01f);
                 }
             }
         }
@@ -88,11 +87,17 @@ public class GridManager : MonoBehaviour
                 {
                     int randomPlaced = UnityEngine.Random.Range(0, placedCellObjects.Length);
                     Instantiate(placedCellObjects[randomPlaced].cellPrefab, new Vector2(x, y), Quaternion.identity);
-                    //yield return new WaitForSeconds(.01f);
+                    yield return new WaitForSeconds(.01f);
                 }
             }
         }
 
+        yield return null;
+    }
+
+    private IEnumerator LayEnemyCell()
+    {
+        waveManager.SetPathCells(pathGenerator.GenerateRoute());
         yield return null;
     }
 }

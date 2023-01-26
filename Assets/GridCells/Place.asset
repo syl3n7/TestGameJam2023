@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Place
   m_EditorClassIdentifier: 
   cellType: 2
-  cellPrefab: {fileID: 3397564738033841182, guid: 478ce9176ed526845b963f16233e37fc, type: 3}
+  cellPrefab: {fileID: 4305777784670576673, guid: ee6726d9e84760248b6422208af2fdca, type: 3}
   zRotation: 0
