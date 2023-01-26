@@ -28,7 +28,7 @@ public class PathGenerator
 
         while (x < width)
         {
-            pathCells.Add(new Vector2Int(x, y));
+            pathCells.Add(new Vector2Int(x , y ));
 
             bool validMove = false;
 

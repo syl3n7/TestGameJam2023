@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GridManager : MonoBehaviour
     public GridCellObjects[] gridCellsObjects;
     public GridCellObjects[] sceneryCellsObjects;
     public GridCellObjects[] placedCellObjects;
+
+    public Canvas canvas;
 
     private PathGenerator pathGenerator;
 
@@ -48,6 +51,7 @@ public class GridManager : MonoBehaviour
             GameObject pathTile = gridCellsObjects[neighbourValue].cellPrefab;
             GameObject pathTileCell = Instantiate(pathTile, new Vector2(pathCell.x, pathCell.y), Quaternion.identity);
             pathTileCell.transform.Rotate(0f, 0f, gridCellsObjects[neighbourValue].zRotation, Space.Self);
+            pathTileCell.transform.SetParent(canvas.transform);
             //yield return new WaitForSeconds(.1f);
         }
 
@@ -59,7 +63,8 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < gridHeight; y++)
             {
-                if (pathGenerator.CellIsEmpty(x, y) && pathGenerator.CellIsEmpty(x, y- 1) && pathGenerator.CellIsEmpty(x, y + 1) && pathGenerator.CellIsEmpty(x + 1, y) && pathGenerator.CellIsEmpty(x - 1, y))
+                if (pathGenerator.CellIsEmpty(x, y) && pathGenerator.CellIsEmpty(x, y- 1) && pathGenerator.CellIsEmpty(x, y + 1) && 
+                        pathGenerator.CellIsEmpty(x + 1, y) && pathGenerator.CellIsEmpty(x - 1, y))
                 {
                     int randomScenery = UnityEngine.Random.Range(0, sceneryCellsObjects.Length);
                     Instantiate(sceneryCellsObjects[randomScenery].cellPrefab, new Vector2(x, y), Quaternion.identity);

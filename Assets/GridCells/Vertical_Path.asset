@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Vertical_Path
   m_EditorClassIdentifier: 
   cellType: 0
-  cellPrefab: {fileID: 4734926046763491666, guid: fa75b60d8ffd2de4ab62333037706d24, type: 3}
+  cellPrefab: {fileID: 6165262153477413545, guid: 37de989881a7bdd4687c17a62730cf6e, type: 3}
   zRotation: 90
