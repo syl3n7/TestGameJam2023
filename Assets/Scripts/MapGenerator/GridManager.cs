@@ -53,7 +53,7 @@ public class GridManager : MonoBehaviour
             GameObject pathTile = gridCellsObjects[neighbourValue].cellPrefab;
             GameObject pathTileCell = Instantiate(pathTile, new Vector2(pathCell.x, pathCell.y), Quaternion.identity);
             pathTileCell.transform.Rotate(0f, 0f, gridCellsObjects[neighbourValue].zRotation, Space.Self);
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.01f);
         }
 
         yield return null;
@@ -83,7 +83,8 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < gridHeight; y++)
             {
-                if (pathGenerator.CellIsEmpty(x, y))
+                if (pathGenerator.CellIsEmpty(x, y) && pathGenerator.CellIsTaken(x + 1, y) || pathGenerator.CellIsEmpty(x, y) && pathGenerator.CellIsTaken(x, y + 1)
+                    || pathGenerator.CellIsEmpty(x, y) && pathGenerator.CellIsTaken(x - 1, y) || pathGenerator.CellIsEmpty(x, y) && pathGenerator.CellIsTaken(x, y - 1))
                 {
                     int randomPlaced = UnityEngine.Random.Range(0, placedCellObjects.Length);
                     Instantiate(placedCellObjects[randomPlaced].cellPrefab, new Vector2(x, y), Quaternion.identity);

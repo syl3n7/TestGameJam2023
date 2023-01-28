@@ -33,6 +33,8 @@ public class PlayerMoveMouse : MonoBehaviour
     }
     #endregion
 
+    public Vector3 mousePosition;
+
     private void Start()
     {
         shipTransform = this.transform;
@@ -40,7 +42,7 @@ public class PlayerMoveMouse : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mousePosition = GetMouseWorldPosition();
+        mousePosition = GetMouseWorldPosition();
 
         if (Input.GetMouseButton(1))
         {

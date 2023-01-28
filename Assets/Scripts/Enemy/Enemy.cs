@@ -34,9 +34,5 @@ public class Enemy : MonoBehaviour
                 nextFire = Time.time + fireRate;
             }
         }
-        else
-        {
-            Debug.Log("MEHEHEH");
-        }
     }
 }
