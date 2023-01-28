@@ -162,11 +162,9 @@ public class GridManager : MonoBehaviour
                         //onMousePrefabe.position = node.placedCellPosition + new Vector2(0f, 0f);
                         onMousePrefabe = null;
                     }
-
                 }
             }
         }
-
         mousePosition = ray;
         smoothmousePosition = mousePosition;
         mousePosition.y = 0;

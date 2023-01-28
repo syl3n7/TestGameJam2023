@@ -303,8 +303,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fff580c2babb7045ac736bd9fb6ace6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObject: {fileID: 3016272034591985533, guid: a6be6aabc1342064b931eec6a07e6b1a, type: 3}
-  enemyInstance: {fileID: 0}
+  waveArray:
+  - enemySpawnArray:
+    - {fileID: 3016272034591985533, guid: a6be6aabc1342064b931eec6a07e6b1a, type: 3}
+    enemyInstance: {fileID: 3016272034591985533, guid: a6be6aabc1342064b931eec6a07e6b1a, type: 3}
+    pathRoute: []
+    nextPathCellIndex: 0
+    enemyRunCompleted: 0
+    timer: 5
+  - enemySpawnArray:
+    - {fileID: 3016272034591985533, guid: a6be6aabc1342064b931eec6a07e6b1a, type: 3}
+    enemyInstance: {fileID: 3016272034591985533, guid: a6be6aabc1342064b931eec6a07e6b1a, type: 3}
+    pathRoute: []
+    nextPathCellIndex: 0
+    enemyRunCompleted: 0
+    timer: 10
 --- !u!1001 &484944116
 PrefabInstance:
   m_ObjectHideFlags: 0
