@@ -1,43 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.EventSystems;
 
 public class TowerPlacing : MonoBehaviour
 {
-    Vector3 offset;
-    public string destinationTag = "DropArea";
+    private GridManager gridManager;
+    private Rigidbody2D rb;
 
-    private void OnMouseDown()
+    public bool isOnPlacedGrid;
+
+    private EnemyWaveManager target;
+    Vector2 moveDirection;
+    float targetDistance = 3f;
+
+    private void Start()
     {
-        offset = transform.position - MouseWorldPosition();
-        transform.GetComponent<Collider2D>().enabled = false;
+        rb = GetComponent<Rigidbody2D>();
+        gridManager = FindObjectOfType<GridManager>();
+        target = FindObjectOfType<EnemyWaveManager>();
     }
 
-    private void OnMouseDrag()
+    private void Update()
     {
-        transform.position = MouseWorldPosition() + offset;
-    }
-
-    private void OnMouseUp()
-    {
-        var rayOrigin = Camera.main.transform.position;
-        var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
-        RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection);
-        if (hit2D)
-        {
-            if (hit2D.transform.tag == destinationTag)
-            {
-                transform.position = hit2D.transform.position;
-                Debug.Log(hit2D);
-            }
+        if (!isOnPlacedGrid) {
+            transform.position = gridManager.smoothmousePosition + new Vector3(0, 0f, -4f);
         }
-        transform.GetComponent<Collider2D>().enabled = true;
-    }
 
-    Vector3 MouseWorldPosition()
-    {
-        var mouseScreenPos = Input.mousePosition;
-        mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
-        return Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        if (Vector3.Distance(transform.position, target.enemyInstance.transform.position) < targetDistance)
+        {
+            moveDirection = (target.enemyInstance.transform.position - transform.position).normalized;
+
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+            transform.eulerAngles = new Vector3(-50, 180, -angle - 90);
+        }
     }
 }

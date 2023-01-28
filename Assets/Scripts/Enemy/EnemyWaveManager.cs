@@ -6,7 +6,7 @@ public class EnemyWaveManager : MonoBehaviour
 {
     public GameObject enemyObject;
     private List<Vector2Int> pathRoute;
-    private GameObject enemyInstance;
+    public GameObject enemyInstance;
     int nextPathCellIndex;
     bool enemyRunCompleted;
 
