@@ -38,19 +38,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a76e5ab442b5e14fa20193693e267d2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.29883623
+      value: 0.40119442
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a76e5ab442b5e14fa20193693e267d2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.64085644
+      value: -0.86036414
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a76e5ab442b5e14fa20193693e267d2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.64085644
+      value: 0.2848989
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a76e5ab442b5e14fa20193693e267d2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.29883623
+      value: 0.13285059
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a76e5ab442b5e14fa20193693e267d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOnPlacedGrid: 0
-  enemy: {fileID: 2490529917137884615, guid: a6be6aabc1342064b931eec6a07e6b1a, type: 3}
 --- !u!58 &-7549517976434621664
 CircleCollider2D:
   m_ObjectHideFlags: 0

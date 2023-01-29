@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EnemyWaveManager : MonoBehaviour
 {
     public Wave[] waveArray;
 
-    private void Start()
-    {
-        
-    }
+    public TowerPlacing tower;
+    Vector2 moveDirection;
+    float targetDistance = 10f;
 
     private void Update()
     {
@@ -27,11 +27,18 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    public Vector3 Tower()
+    public void TowerLookAtEnemy()
     {
-        Vector3 enemy;
-        enemy = waveArray[0].enemyInstance.transform.position;
-        return enemy;
+        foreach (Wave enemy in waveArray)
+        {
+            if (Vector3.Distance(tower.transform.position, enemy.enemyInstance.transform.position) < targetDistance)
+            {
+                moveDirection = (enemy.enemyInstance.transform.position - tower.transform.position).normalized;
+
+                float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+                tower.transform.eulerAngles = new Vector3(-50, 180, -angle - 90);
+            }
+        }
     }
 
     [System.Serializable]
@@ -43,12 +50,6 @@ public class EnemyWaveManager : MonoBehaviour
         public int nextPathCellIndex;
         public bool enemyRunCompleted;
         public float timer;
-
-        public void Start()
-        {
-            SpawnEnemies();
-            nextPathCellIndex = 1;
-        }
 
         public void Update()
         {

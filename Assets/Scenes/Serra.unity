@@ -318,6 +318,7 @@ MonoBehaviour:
     nextPathCellIndex: 0
     enemyRunCompleted: 0
     timer: 10
+  tower: {fileID: 108122811, guid: 855335d673286d940905c6923259c89f, type: 3}
 --- !u!1001 &484944116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -475,6 +476,7 @@ GameObject:
   - component: {fileID: 1304095332}
   - component: {fileID: 1304095331}
   - component: {fileID: 1304095330}
+  - component: {fileID: 1304095336}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Player
@@ -608,3 +610,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.88303864, y: 1.1359746}
   m_EdgeRadius: 0
+--- !u!114 &1304095336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304095329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b388c9caba123c4aac6f813754596d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 3
